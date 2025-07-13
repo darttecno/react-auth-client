@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
+import Register from './components/Register';
+import RequestForm from './components/RequestForm'; // Import the new component
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 
-// Placeholders for components
-const Register = () => <h2>Register Page</h2>;
+// Placeholder for Home component
 const Home = () => <h2>Welcome Home! You are logged in.</h2>;
 
 const AppNavbar = () => {
@@ -25,9 +26,14 @@ const AppNavbar = () => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {isAuthenticated ? (
-              <li className="nav-item">
-                <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
-              </li>
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/requests">Create Request</Link>
+                </li>
+                <li className="nav-item">
+                  <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
+                </li>
+              </>
             ) : (
               <>
                 <li className="nav-item">
@@ -55,6 +61,14 @@ function App() {
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route 
+                path="/requests"
+                element={
+                  <ProtectedRoute>
+                    <RequestForm />
+                  </ProtectedRoute>
+                }
+              />
               <Route 
                 path="/" 
                 element={
