@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
-import RequestForm from './components/RequestForm'; // Import the new component
+import RequestForm from './components/RequestForm';
+import RequestListPaginated from './components/RequestList';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
@@ -29,6 +30,9 @@ const AppNavbar = () => {
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/requests">Create Request</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/list-requests">List Request</Link>
                 </li>
                 <li className="nav-item">
                   <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
@@ -66,6 +70,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <RequestForm />
+                  </ProtectedRoute>
+                }
+              />
+              <Route 
+                path="/list-requests"
+                element={
+                  <ProtectedRoute>
+                    <RequestListPaginated />
                   </ProtectedRoute>
                 }
               />
