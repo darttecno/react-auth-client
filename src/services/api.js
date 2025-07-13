@@ -47,3 +47,12 @@ export const apiFetch = async (endpoint, options = {}) => {
     throw error;
   }
 };
+
+export const getAuthenticatedUsers = async () => {
+  try {
+    const response = await apiFetch('/auth/authenticated-users');
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

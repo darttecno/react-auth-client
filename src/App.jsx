@@ -5,6 +5,7 @@ import Register from './components/Register';
 import RequestForm from './components/RequestForm';
 import RequestListPaginated from './components/RequestList';
 import ProtectedRoute from './components/ProtectedRoute';
+import AuthenticatedUsers from './components/AuthenticatedUsers';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 
@@ -33,6 +34,9 @@ const AppNavbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/list-requests">Listar Solicitudes</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/authenticated-users">Usuarios Autenticados</Link>
                 </li>
                 <li className="nav-item">
                   <button className="btn btn-link nav-link" onClick={handleLogout}>Cerrar Sesión</button>
@@ -78,6 +82,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <RequestListPaginated />
+                  </ProtectedRoute>
+                }
+              />
+              <Route 
+                path="/authenticated-users"
+                element={
+                  <ProtectedRoute>
+                    <AuthenticatedUsers />
                   </ProtectedRoute>
                 }
               />

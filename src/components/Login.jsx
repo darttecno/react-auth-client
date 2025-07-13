@@ -12,16 +12,16 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await apiFetch('/auth/login', {
+      const response = await apiFetch('/auth/login', {
         method: 'POST',
         body: JSON.stringify({ username, password }),
       });
 
-      if (data && data.token) {
-        authLogin(data.token);
+      if (response && response.token && response.refreshToken) {
+        authLogin(response.token, response.refreshToken);
         navigate('/');
       } else {
-        alert('¡Inicio de sesión exitoso, pero no se recibió ningún token!');
+        alert('¡Inicio de sesión exitoso, pero no se recibieron los tokens esperados!');
       }
     } catch (error) {
       alert(`Inicio de sesión fallido: ${error.message}`);
