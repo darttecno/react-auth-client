@@ -25,7 +25,7 @@ const RequestForm = () => {
           setShowNoPosFields(data[0].noPos);
         }
       } catch (err) {
-        setError('Failed to fetch medications.');
+        setError('Error al cargar los medicamentos.');
       }
     };
     fetchMedications();
@@ -49,7 +49,7 @@ const RequestForm = () => {
     setSuccessMessage(null);
 
     if (!selectedMedication || quantity <= 0) {
-      setError('Please select a medication and enter a valid quantity.');
+      setError('Por favor, selecciona un medicamento e ingresa una cantidad válida.');
       return;
     }
 
@@ -67,7 +67,7 @@ const RequestForm = () => {
         method: 'POST',
         body: JSON.stringify(requestBody),
       });
-      setSuccessMessage('Request created successfully!');
+      setSuccessMessage('¡Solicitud creada exitosamente!');
       setQuantity(1);
       setNoPosData({
         orderNumber: '',
@@ -76,7 +76,7 @@ const RequestForm = () => {
         email: '',
       });
     } catch (err) {
-      setError(err.message || 'Failed to create request.');
+      setError(err.message || 'Error al crear la solicitud.');
     }
   };
 
@@ -87,7 +87,7 @@ const RequestForm = () => {
           <div className="card shadow-sm">
             <div className="card-body">
               <h2 className="card-title text-center mb-4">
-                Create Medication Request
+                Crear Solicitud de Medicamento
               </h2>
               {error && <div className="alert alert-danger">{error}</div>}
               {successMessage && (
@@ -95,7 +95,7 @@ const RequestForm = () => {
               )}
               <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
-                  <label htmlFor="medication">Medication</label>
+                  <label htmlFor="medication">Medicamento</label>
                   <select
                     id="medication"
                     className="form-select"
@@ -110,7 +110,7 @@ const RequestForm = () => {
                   </select>
                 </div>
                 <div className="form-group mb-3">
-                  <label htmlFor="quantity">Quantity</label>
+                  <label htmlFor="quantity">Cantidad</label>
                   <input
                     type="number"
                     id="quantity"
@@ -125,7 +125,7 @@ const RequestForm = () => {
                 {showNoPosFields && (
                   <>
                     <div className="form-group mb-3">
-                      <label htmlFor="orderNumber">Order Number</label>
+                      <label htmlFor="orderNumber">Número de Pedido</label>
                       <input
                         type="text"
                         id="orderNumber"
@@ -137,7 +137,7 @@ const RequestForm = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label htmlFor="address">Address</label>
+                      <label htmlFor="address">Dirección</label>
                       <input
                         type="text"
                         id="address"
@@ -149,7 +149,7 @@ const RequestForm = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label htmlFor="phone">Phone</label>
+                      <label htmlFor="phone">Teléfono</label>
                       <input
                         type="text"
                         id="phone"
@@ -161,7 +161,7 @@ const RequestForm = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="email">Correo Electrónico</label>
                       <input
                         type="email"
                         id="email"
@@ -176,7 +176,7 @@ const RequestForm = () => {
                 )}
 
                 <button type="submit" className="btn btn-primary w-100">
-                  Submit Request
+                  Enviar Solicitud
                 </button>
               </form>
             </div>

@@ -9,7 +9,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 
 // Placeholder for Home component
-const Home = () => <h2>Welcome Home! You are logged in.</h2>;
+const Home = () => <h2>¡Bienvenido a Casa! Has iniciado sesión.</h2>;
 
 const AppNavbar = () => {
   const { isAuthenticated, logout } = useAuth();
@@ -23,28 +23,28 @@ const AppNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">AuthApp</Link>
+        <Link className="navbar-brand" to="/">Aplicación de Autenticación</Link>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {isAuthenticated ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/requests">Create Request</Link>
+                  <Link className="nav-link" to="/requests">Crear Solicitud</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/list-requests">List Request</Link>
+                  <Link className="nav-link" to="/list-requests">Listar Solicitudes</Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
+                  <button className="btn btn-link nav-link" onClick={handleLogout}>Cerrar Sesión</button>
                 </li>
               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">Login</Link>
+                  <Link className="nav-link" to="/login">Iniciar Sesión</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/register">Register</Link>
+                  <Link className="nav-link" to="/register">Registrarse</Link>
                 </li>
               </>
             )}

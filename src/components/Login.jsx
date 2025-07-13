@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { apiFetch } from '../services/api';
 
 const Login = () => {
-  const [login, setLogin] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login: authLogin } = useAuth();
   const navigate = useNavigate();
@@ -14,17 +14,17 @@ const Login = () => {
     try {
       const data = await apiFetch('/auth/login', {
         method: 'POST',
-        body: JSON.stringify({ login, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (data && data.token) {
         authLogin(data.token);
         navigate('/');
       } else {
-        alert('Login successful, but no token received.');
+        alert('¡Inicio de sesión exitoso, pero no se recibió ningún token!');
       }
     } catch (error) {
-      alert(`Login failed: ${error.message}`);
+      alert(`Inicio de sesión fallido: ${error.message}`);
     }
   };
 
@@ -34,17 +34,17 @@ const Login = () => {
         <div className="col-md-6 col-lg-4">
           <div className="card shadow-sm">
             <div className="card-body">
-              <h2 className="card-title text-center mb-4">Login</h2>
+              <h2 className="card-title text-center mb-4">Iniciar Sesión</h2>
               <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
-                  <label htmlFor="login">Email or Username</label>
+                  <label htmlFor="username">Correo Electrónico o Usuario</label>
                   <input
                     type="text"
                     className="form-control"
-                    id="login"
-                    placeholder="Enter email or username"
-                    value={login}
-                    onChange={(e) => setLogin(e.target.value)}
+                    id="username"
+                    placeholder="Ingresa tu correo o usuario"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     required
                   />
                 </div>

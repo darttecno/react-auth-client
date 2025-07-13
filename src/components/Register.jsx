@@ -28,46 +28,46 @@ const Register = () => {
         <div className="col-md-6 col-lg-4">
           <div className="card shadow-sm">
             <div className="card-body">
-              <h2 className="card-title text-center mb-4">Register</h2>
+              <h2 className="card-title text-center mb-4">Registrarse</h2>
               <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="username">Nombre de Usuario</label>
                   <input
                     type="text"
                     className="form-control"
                     id="username"
-                    placeholder="Enter username"
+                    placeholder="Ingresa tu nombre de usuario"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
                   />
                 </div>
                 <div className="form-group mb-3">
-                  <label htmlFor="email">Email address</label>
+                  <label htmlFor="email">Dirección de Correo Electrónico</label>
                   <input
                     type="email"
                     className="form-control"
                     id="email"
-                    placeholder="Enter email"
+                    placeholder="Ingresa tu correo electrónico"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
                 <div className="form-group mb-3">
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Contraseña</label>
                   <input
                     type="password"
                     className="form-control"
                     id="password"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
                 <button type="submit" className="btn btn-primary w-100">
-                  Register
+                  Registrarse
                 </button>
               </form>
             </div>
